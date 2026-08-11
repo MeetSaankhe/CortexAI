@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { logger } from '../utils/logger';
+import { logException } from '../utils/telemetry';
 
 export class AppError extends Error {
   statusCode: number;
@@ -51,6 +52,10 @@ export function errorHandler(
 
   logger.error(`[${requestId}] ${statusCode} ${errorCode} - ${message}\n${err.stack || ''}`);
 
+  // Send exception to Telemetry Highway
+  if (statusCode >= 500) {
+    logException(err, `[${requestId}] ${errorCode}`, { statusCode, requestId, path: req.path });
+  }
   res.status(statusCode).json({
     success: false,
     error: {

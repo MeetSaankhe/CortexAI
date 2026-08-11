@@ -19,6 +19,7 @@ import { llmRouter } from './routes/llm.routes';
 import { ocrRouter } from './routes/ocr.routes';
 import { jobsRouter } from './routes/jobs.routes';
 import { initQueue } from './queue';
+import { telemetryMiddleware } from './utils/telemetry';
 
 dotenv.config();
 
@@ -80,6 +81,7 @@ app.use(express.urlencoded({ extended: true, limit: '200mb', parameterLimit: 100
 app.use(cookieParser());
 app.use(requestIdMiddleware);
 app.use(requestLoggerMiddleware);
+app.use(telemetryMiddleware);
 app.use(limiter);
 
 const DEFAULT_BASE_PATH = isVercel || isProduction ? '' : '/api';
