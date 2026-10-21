@@ -10,32 +10,26 @@
  */
 
 import { AgentNode, WorkflowState, SimilarityResult } from '../types';
+import { splitSentences } from '../../utils/tokens';
 
 export class SemanticSimilarityNode implements AgentNode {
   name = 'semantic_similarity';
 
   shouldExecute(state: WorkflowState): boolean {
     // Only run if text has enough sentences to compare
-    const sentences = state.processedText.split(/[.!?\n]+/).filter(s => s.trim().length > 15);
-    return sentences.length >= 3;
+    const sentences = splitSentences(state.processedText);
+    return sentences.length >= 2;
   }
 
   async execute(state: WorkflowState): Promise<WorkflowState> {
     const text = state.processedText;
-    const sentences = this.extractSentences(text);
+    const sentences = splitSentences(text);
     const result = this.computeSimilarity(sentences);
 
     return {
       ...state,
       similarityResult: result,
     };
-  }
-
-  private extractSentences(text: string): string[] {
-    return text
-      .split(/[.!?\n]+/)
-      .map(s => s.trim())
-      .filter(s => s.length > 15);
   }
 
   private computeSimilarity(sentences: string[]): SimilarityResult {
@@ -54,7 +48,7 @@ export class SemanticSimilarityNode implements AgentNode {
           sentencePairs.push({ indexA: i, indexB: j, similarity });
         }
 
-        if (similarity > 0.7) {
+        if (similarity > 0.65) {
           // The later sentence is considered redundant
           redundantIndices.add(j);
         }

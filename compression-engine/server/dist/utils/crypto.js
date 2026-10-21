@@ -1,0 +1,103 @@
+"use strict";
+/**
+ * AES-256-GCM encryption for sensitive data at rest (API keys, tokens).
+ *
+ * Storage format (base64-encoded):  IV(12) || TAG(16) || CIPHERTEXT
+ *
+ * The encryption key comes from ENCRYPTION_KEY env var — a 32-byte
+ * (64-hex-char) random value. Rotating this key requires re-encrypting
+ * all stored secrets. NEVER commit or share the key.
+ *
+ * Also provides SHA-256 hashing for tokens and fingerprints — these
+ * are one-way and used for lookups/duplicate detection without ever
+ * having to decrypt.
+ */
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.encrypt = encrypt;
+exports.decrypt = decrypt;
+exports.sha256 = sha256;
+exports.keyPrefix = keyPrefix;
+exports.safeEqual = safeEqual;
+const crypto_1 = __importDefault(require("crypto"));
+const ALGORITHM = 'aes-256-gcm';
+const IV_LENGTH = 12; // GCM standard
+const TAG_LENGTH = 16;
+const KEY_LENGTH = 32;
+let cachedKey = null;
+function getKey() {
+    if (cachedKey)
+        return cachedKey;
+    const hex = process.env.ENCRYPTION_KEY;
+    if (!hex) {
+        throw new Error('ENCRYPTION_KEY environment variable is not set. ' +
+            'Generate one with:  node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'hex\'))"');
+    }
+    const key = Buffer.from(hex, 'hex');
+    if (key.length !== KEY_LENGTH) {
+        throw new Error(`ENCRYPTION_KEY must decode to exactly ${KEY_LENGTH} bytes (${KEY_LENGTH * 2} hex chars). ` +
+            `Got ${key.length} bytes.`);
+    }
+    cachedKey = key;
+    return key;
+}
+/**
+ * Encrypt a plaintext string. Output is base64-encoded and safe for DB storage.
+ */
+function encrypt(plaintext) {
+    if (!plaintext)
+        return '';
+    const iv = crypto_1.default.randomBytes(IV_LENGTH);
+    const cipher = crypto_1.default.createCipheriv(ALGORITHM, getKey(), iv);
+    const encrypted = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final()]);
+    const tag = cipher.getAuthTag();
+    // IV || TAG || CIPHERTEXT  →  base64
+    return Buffer.concat([iv, tag, encrypted]).toString('base64');
+}
+/**
+ * Decrypt a previously-encrypted payload. Throws if tampered or wrong key.
+ */
+function decrypt(payload) {
+    if (!payload)
+        return '';
+    const buf = Buffer.from(payload, 'base64');
+    if (buf.length < IV_LENGTH + TAG_LENGTH + 1) {
+        throw new Error('Invalid encrypted payload: too short');
+    }
+    const iv = buf.subarray(0, IV_LENGTH);
+    const tag = buf.subarray(IV_LENGTH, IV_LENGTH + TAG_LENGTH);
+    const encrypted = buf.subarray(IV_LENGTH + TAG_LENGTH);
+    const decipher = crypto_1.default.createDecipheriv(ALGORITHM, getKey(), iv);
+    decipher.setAuthTag(tag);
+    const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]);
+    return decrypted.toString('utf8');
+}
+/**
+ * SHA-256 hex digest. Used for token hashes and secret fingerprints.
+ * One-way — cannot be reversed.
+ */
+function sha256(input) {
+    return crypto_1.default.createHash('sha256').update(input, 'utf8').digest('hex');
+}
+/**
+ * Take the first `n` characters of a plaintext key for UI display,
+ * masking the rest. e.g. "sk-abcd..." for "sk-abcdef123456...".
+ */
+function keyPrefix(plaintext, chars = 8) {
+    if (!plaintext)
+        return '';
+    return plaintext.slice(0, chars);
+}
+/**
+ * Constant-time comparison to avoid timing attacks on secrets.
+ */
+function safeEqual(a, b) {
+    const bufA = Buffer.from(a);
+    const bufB = Buffer.from(b);
+    if (bufA.length !== bufB.length)
+        return false;
+    return crypto_1.default.timingSafeEqual(bufA, bufB);
+}
+//# sourceMappingURL=crypto.js.map

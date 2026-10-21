@@ -1,0 +1,1023 @@
+2026-08-02 03:45:01 [error]: [3e48d593-80ee-4c93-9861-0fb34be29d04] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:64:40
+
+  61 try {
+  62   const data = registerSchema.parse(req.body);
+  63 
+→ 64   const existing = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:64:40
+
+  61 try {
+  62   const data = registerSchema.parse(req.body);
+  63 
+→ 64   const existing = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:64:22)
+2026-08-02 03:45:01 [error]: [3e48d593-80ee-4c93-9861-0fb34be29d04] POST /api/auth/register 500 96ms
+2026-08-02 04:20:32 [error]: [a0e5a0a1-2004-49ef-92ac-4fec906ee711] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:64:40
+
+  61 try {
+  62   const data = registerSchema.parse(req.body);
+  63 
+→ 64   const existing = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:64:40
+
+  61 try {
+  62   const data = registerSchema.parse(req.body);
+  63 
+→ 64   const existing = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:64:22)
+2026-08-02 04:20:32 [error]: [a0e5a0a1-2004-49ef-92ac-4fec906ee711] POST /api/auth/register 500 10ms
+2026-08-02 04:33:11 [error]: [d67f7686-2360-4b60-afb7-00564ff78296] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:113:36
+
+  110 try {
+  111   const data = loginSchema.parse(req.body);
+  112 
+→ 113   const user = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:113:36
+
+  110 try {
+  111   const data = loginSchema.parse(req.body);
+  112 
+→ 113   const user = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:113:18)
+2026-08-02 04:33:11 [error]: [d67f7686-2360-4b60-afb7-00564ff78296] POST /api/auth/login 500 49ms
+2026-08-02 04:37:00 [error]: [3cc14a2d-3236-427e-bc12-f66b370dfae1] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:113:36
+
+  110 try {
+  111   const data = loginSchema.parse(req.body);
+  112 
+→ 113   const user = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:113:36
+
+  110 try {
+  111   const data = loginSchema.parse(req.body);
+  112 
+→ 113   const user = await prisma.user.findUnique(
+error: Environment variable not found: DATABASE_URL.
+  -->  schema.prisma:11
+   | 
+10 |   provider  = "postgresql"
+11 |   url       = env("DATABASE_URL")
+   | 
+
+Validation Error Count: 1
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:113:18)
+2026-08-02 04:37:00 [error]: [3cc14a2d-3236-427e-bc12-f66b370dfae1] POST /api/auth/login 500 44ms
+2026-08-02 04:40:15 [error]: [-] 500 internal_error - Not allowed by CORS
+Error: Not allowed by CORS
+    at origin (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\app.ts:60:21)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at internalNext (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\helmet\index.cjs:558:6)
+2026-08-02 04:42:28 [error]: [-] 500 internal_error - Not allowed by CORS
+Error: Not allowed by CORS
+    at origin (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\app.ts:60:21)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at internalNext (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\helmet\index.cjs:558:6)
+2026-08-02 12:34:42 [error]: [-] 500 internal_error - Not allowed by CORS
+Error: Not allowed by CORS
+    at origin (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\app.ts:60:21)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at internalNext (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\helmet\index.cjs:558:6)
+2026-08-02 12:34:46 [error]: [-] 500 internal_error - Not allowed by CORS
+Error: Not allowed by CORS
+    at origin (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\app.ts:60:21)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at internalNext (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\helmet\index.cjs:558:6)
+2026-08-02 12:34:51 [error]: [-] 500 internal_error - Not allowed by CORS
+Error: Not allowed by CORS
+    at origin (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\app.ts:60:21)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at internalNext (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\helmet\index.cjs:558:6)
+2026-08-02 12:35:19 [error]: [-] 500 internal_error - Not allowed by CORS
+Error: Not allowed by CORS
+    at origin (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\app.ts:60:21)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at internalNext (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\helmet\index.cjs:558:6)
+2026-08-02 12:35:24 [error]: [-] 500 internal_error - Not allowed by CORS
+Error: Not allowed by CORS
+    at origin (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\app.ts:60:21)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at internalNext (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\helmet\index.cjs:558:6)
+2026-08-02 12:51:21 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "86edb2cf-9cea-4b10-ab5a-d4deeafe0f15",
+             userId: "07df9f6f-9f7b-4f96-b129-f4e3e1e19412",
+             action: "document.uploaded",
+             resource: "ocr",
+             resourceId: "23949352-8dc8-4df5-bdee-fdd28c78b4d9",
+             metadata: {
+               filename: "Screenshot 2026-07-25 103631.png",
+               size: 704058,
+               confidence: 88,
+               wordsExtracted: 115
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-08-02 12:51:47 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "fc233b52-aa6a-422a-a4af-adc325a8aaaa",
+             userId: "07df9f6f-9f7b-4f96-b129-f4e3e1e19412",
+             action: "document.uploaded",
+             resource: "document",
+             resourceId: "177b5ae2-6fab-4048-b27a-3ae2163d0827",
+             metadata: {
+               filename: "EXP2 (1).pdf",
+               size: 198187,
+               tokens: 1830
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-08-02 13:28:31 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "b303fa95-fe33-4392-904f-719725a2e7c0",
+             userId: "07df9f6f-9f7b-4f96-b129-f4e3e1e19412",
+             action: "document.uploaded",
+             resource: "ocr",
+             resourceId: "cdaafe98-24ac-49d8-bc12-8d24cb7e9c1a",
+             metadata: {
+               filename: "Screenshot 2026-07-25 103631.png",
+               size: 704058,
+               confidence: 88,
+               wordsExtracted: 115
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-08-02 18:27:29 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\services\activity-log.service.ts:46:32
+
+  43  */
+  44 static async log(entry: LogEntry): Promise<void> {
+  45   try {
+→ 46     await prisma.activityLog.create({
+           data: {
+             id: "f0915b3a-b418-4c51-b3ef-278846c7172b",
+             userId: "07df9f6f-9f7b-4f96-b129-f4e3e1e19412",
+             action: "ocr.extracted",
+             resource: "ocr",
+             resourceId: "bc66bd74-11d8-4aec-a480-6796f01e1301",
+             metadata: {
+               filename: "Screenshot 2026-07-25 103631.png",
+               size: 704058,
+               confidence: 88,
+               wordsExtracted: 115
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-08-02 19:33:16 [error]: [c240b3d7-d438-4d01-9569-c727674c52aa] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\middleware\auth.ts:64:12)
+2026-08-02 19:33:21 [error]: [5e479beb-6c66-4933-9393-efd866d4164f] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:218:46)
+2026-08-02 19:33:46 [error]: [401ae64c-37d8-41af-9517-2c41948da072] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:114:36
+
+  111 try {
+  112   const data = loginSchema.parse(req.body);
+  113 
+→ 114   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:114:36
+
+  111 try {
+  112   const data = loginSchema.parse(req.body);
+  113 
+→ 114   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:114:18)
+2026-08-02 19:33:46 [error]: [401ae64c-37d8-41af-9517-2c41948da072] POST /api/auth/login 500 5048ms
+2026-08-02 19:33:56 [error]: [4f3d3bf9-f729-46af-98d6-7cde3f1eee87] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:114:36
+
+  111 try {
+  112   const data = loginSchema.parse(req.body);
+  113 
+→ 114   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:114:36
+
+  111 try {
+  112   const data = loginSchema.parse(req.body);
+  113 
+→ 114   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI\compression-engine\server\src\routes\auth.routes.ts:114:18)
+2026-09-27 14:00:14 [error]: [ebfe2add-f1c6-4ea3-898a-46a06591ba52] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-09-27 14:00:14 [error]: [6f8ad62c-0c93-4f21-963b-b9da5f9fee3b] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-09-27 14:00:14 [error]: [08f72dce-6d7c-4404-b750-3abe3fd5e4cf] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-09-27 14:00:14 [error]: [21cae462-c2c3-43c5-a30a-91dbbc2b40b9] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-09-27 14:01:29 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "0d528823-1cbd-4db1-83e1-7fd7a21c86ec",
+             userId: "9912f79a-b510-4214-87b1-154c5eb0d1f3",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "51c95f8f-86b1-4601-ae6a-db34816fb504",
+             metadata: {
+               level: "medium",
+               provider: "openai",
+               ratio: 0.027448533998752356,
+               tokensSaved: 11
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-27 14:04:53 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "9ed03888-31e0-4830-b621-5396299c6f89",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "9c52f1f3-51d7-4730-a377-0be60c496061",
+             metadata: {
+               level: "medium",
+               provider: "openai",
+               ratio: 0.011695215593620745,
+               tokensSaved: 25
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-27 14:52:38 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "dca2af0e-27a4-4956-af40-2f982d29b113",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "846aa2a0-01da-4f48-ae9a-a5957f796625",
+             metadata: {
+               level: "medium",
+               provider: "openai",
+               ratio: 0.2701335754117494,
+               tokensSaved: 521
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-27 14:54:08 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "7fbd6197-bf19-458d-92ef-930f85b91e97",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "3d2ec452-9ebc-4f48-b50b-71f77221b406",
+             metadata: {
+               level: "extreme",
+               provider: "openai",
+               ratio: 0.7109324341849306,
+               tokensSaved: 1370
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-27 14:56:33 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "03ec85db-17f9-455c-9d3c-3a3e5f5fad0b",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "document.uploaded",
+             resource: "ocr",
+             resourceId: "7b43b862-8b31-4839-872d-046417c7cdce",
+             metadata: {
+               filename: "WhatsApp Image 2026-08-01 at 4.38.21 PM.jpeg",
+               size: 71444,
+               confidence: 83,
+               wordsExtracted: 81
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-28 14:13:31 [error]: [391867db-26fa-4b25-87e2-a10ba2ed9da5] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-09-28 14:13:31 [error]: [e8067c8e-fdcd-4caa-a96e-773944abb7a4] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-09-28 14:13:31 [error]: [80607336-ce6b-47ff-a983-271557c20604] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+2026-09-28 14:13:31 [error]: [944f331a-5b52-4ce0-9289-016e1b655907] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+2026-09-28 14:22:43 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "e251be37-6423-4ef9-9858-e5d13351400f",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "80c92a90-413a-4644-9b7b-2f5a7ed74dfc",
+             metadata: {
+               level: "extreme",
+               provider: "openai",
+               ratio: 0.7651083238312428,
+               tokensSaved: 2852
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-28 14:34:53 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "68a38db5-ca3b-4b04-ac59-4b1500c9a646",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "6b3eaed0-6fab-479e-9d01-63bafbe2b211",
+             metadata: {
+               level: "extreme",
+               provider: "openai",
+               ratio: 0.7651083238312428,
+               tokensSaved: 2852
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-28 14:35:37 [error]: [9f568356-eda7-4ae6-92f1-d2c98cbc6f2b] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+2026-09-28 14:35:37 [error]: [bda2fef0-9912-4907-bb0d-a463ded8317c] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+2026-09-28 14:35:37 [error]: [b1d6f351-d974-4a7d-a38d-45ff902fc970] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+2026-09-28 14:35:37 [error]: [fc01cc42-7af1-4a50-9232-2e854eb307d6] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+2026-09-28 14:35:59 [error]: [172d762d-04e6-4502-8d9d-72a71cb44c7a] 401 unauthorized - Invalid credentials
+Error: Invalid credentials
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:128:13)
+2026-09-28 14:36:47 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "6506cb3c-df1e-455d-8544-d3cf530cf299",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "0e843b6b-1ec5-4888-bb1d-c541d8141b2c",
+             metadata: {
+               level: "extreme",
+               provider: "openai",
+               ratio: 0.26956025128497996,
+               tokensSaved: 236
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-28 14:37:22 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "7f705de9-3d37-426e-8009-78fc101466fd",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "4e16f1c3-11b4-4ea0-af0e-5bd3ee5a6a1d",
+             metadata: {
+               level: "extreme",
+               provider: "openai",
+               ratio: 0.72556684910086,
+               tokensSaved: 464
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-28 14:38:59 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "280af089-7e56-4032-be71-48ed6c6ce12d",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "e8686aa3-44e5-4afc-9a66-232e163947a1",
+             metadata: {
+               level: "medium",
+               provider: "openai",
+               ratio: 0.2924159499609069,
+               tokensSaved: 187
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-09-28 14:41:14 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "580ee177-c5fb-4002-ba6f-8fd0f2065f58",
+             userId: "e300d411-7a97-4c29-8104-c59afd300ccf",
+             action: "document.uploaded",
+             resource: "ocr",
+             resourceId: "afc2ca6c-fcac-4922-bc7e-74a94f23499a",
+             metadata: {
+               filename: "ChatGPT Image Aug 7, 2026, 08_57_46 PM.png",
+               size: 1328340,
+               confidence: 59,
+               wordsExtracted: 180
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-10-20 19:59:32 [error]: [80b461fe-41da-4405-be5c-83561f77eafd] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-10-20 19:59:32 [error]: [ef3148e1-6cbb-4db0-a552-8ec4411e435d] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-10-20 19:59:33 [error]: [6bba14b8-cf7a-4597-a499-69c1e81a0e02] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-10-20 19:59:33 [error]: [f5bf9fa5-1f72-4750-96a3-5f2ea7799c0c] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\express\lib\router\index.js:47:12)
+2026-10-20 20:00:01 [error]: [5d42b0e5-ab39-4e5d-8123-21ffd823448a] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:18)
+2026-10-20 20:00:01 [error]: [5d42b0e5-ab39-4e5d-8123-21ffd823448a] POST /api/auth/login 500 17ms
+2026-10-20 20:00:03 [error]: [f171d31b-5dcc-4168-ab93-8aa1eb305a29] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:18)
+2026-10-20 20:00:03 [error]: [f171d31b-5dcc-4168-ab93-8aa1eb305a29] POST /api/auth/login 500 19ms
+2026-10-20 20:00:14 [error]: [9ce92218-21d4-43d1-be6f-096a9d1f435b] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+PrismaClientInitializationError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Can't reach database server at `aws-1-ap-south-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-1-ap-south-1.pooler.supabase.com:6543`.
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7615)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:18)
+2026-10-20 20:00:14 [error]: [9ce92218-21d4-43d1-be6f-096a9d1f435b] POST /api/auth/login 500 14ms
+2026-10-20 22:03:07 [error]: [Server] Uncaught exception listen EADDRINUSE: address already in use :::3001
+2026-10-20 22:13:00 [error]: [Server] Uncaught exception listen EADDRINUSE: address already in use :::3001
+2026-10-20 22:17:24 [error]: [604d0c77-7374-4a1e-8c96-ae773fd98031] 401 unauthorized - Invalid credentials
+Error: Invalid credentials
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:110:22)
+2026-10-20 22:18:48 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "c985712e-29c9-4663-8644-ed70659a99c1",
+             userId: "92992a1c-3f1c-44e6-b475-98c9fe8398d9",
+             action: "compression.created",
+             resource: "compression",
+             resourceId: "b7dac36e-fc44-4cad-bdf6-82cce851255a",
+             metadata: {
+               level: "medium",
+               provider: "openai",
+               ratio: 0.43369760234871957,
+               tokensSaved: 665
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: undefined
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-10-20 22:23:21 [error]: [eb6880f8-f168-4b0c-9255-71f71e9861e7] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+2026-10-20 22:23:21 [error]: [0f828b55-96b2-4cb9-804a-224149e7700b] 401 unauthorized - Invalid token
+Error: Invalid token
+    at authenticate (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\middleware\auth.ts:63:12)
+2026-10-20 22:23:21 [error]: [88191fc7-e2b6-4472-8849-6231ffcb45dd] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+2026-10-20 22:23:21 [error]: [c47d5beb-ca1e-4883-ad9a-06137e4a38aa] 401 unauthorized - Invalid refresh token
+Error: Invalid refresh token
+    at <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:213:46)
+2026-10-20 22:23:46 [error]: [69a7055b-be4b-420c-ae37-35c5d2bb99c6] 500 internal_error - 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 13)
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.findUnique()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:36
+
+  106 try {
+  107   const data = loginSchema.parse(req.body);
+  108 
+→ 109   const user = await prisma.user.findUnique(
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 13)
+    at $n.handleRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async <anonymous> (C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\routes\auth.routes.ts:109:18)
+2026-10-20 22:23:46 [error]: [69a7055b-be4b-420c-ae37-35c5d2bb99c6] POST /api/auth/login 500 10009ms
+2026-10-20 22:26:04 [error]: Failed to log activity: 
+Invalid `prisma.activityLog.create()` invocation in
+C:\Users\bhavi\Desktop\Project\CortexAI1\compression-engine\server\src\services\activity-log.service.ts:45:32
+
+  42  */
+  43 static async log(entry: LogEntry): Promise<void> {
+  44   try {
+→ 45     await prisma.activityLog.create({
+           data: {
+             id: "1abfd49e-6520-47fb-9e0a-c4bfabfb3e8c",
+             userId: "92992a1c-3f1c-44e6-b475-98c9fe8398d9",
+             action: "document.uploaded",
+             resource: "document",
+             resourceId: "cd53eb09-688a-4696-8f7b-079af8e161b9",
+             metadata: {
+               filename: "ApnaGig_Case_Study f (1).pdf",
+               size: 206217,
+               tokens: 3850
+             },
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ipAddress: "::1",
+             userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+           }
+         })
+
+Argument `metadata`: Invalid value provided. Expected String or Null, provided Object.
+2026-10-20 22:35:16 [error]: [Server] Uncaught exception listen EADDRINUSE: address already in use :::3001
+2026-10-20 22:41:44 [error]: [Server] Uncaught exception listen EADDRINUSE: address already in use :::3001
+2026-10-20 22:42:06 [error]: [Server] Uncaught exception listen EADDRINUSE: address already in use :::3001

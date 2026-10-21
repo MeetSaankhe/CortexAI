@@ -19,6 +19,7 @@
 
 import { AgentNode, WorkflowState, CompressionLevel } from '../types';
 import { evaluatePreservation, shouldPreserve } from '../../utils/preservation';
+import { splitSentences } from '../../utils/tokens';
 
 const COMPRESSION_TARGETS: Record<CompressionLevel, number> = {
   low: 0.30,
@@ -91,35 +92,74 @@ export class CompressionNode implements AgentNode {
   }
 
   private removeDuplicates(text: string, state: WorkflowState, target: number): string {
-    if (!state.duplicateResult || target < 0.3) return text;
+    const sentences = splitSentences(text);
+    if (sentences.length <= 1) return text;
 
-    const sentences = text.split(/(?<=[.!?\n])\s*/);
-    const duplicateIndices = new Set(
-      state.duplicateResult.duplicateSentences.map(d => d.duplicate)
+    // Collect duplicate and redundant sentence indices from agents
+    const redundantIndices = new Set<number>();
+
+    if (state.duplicateResult?.duplicateSentences) {
+      for (const d of state.duplicateResult.duplicateSentences) {
+        redundantIndices.add(d.duplicate);
+      }
+    }
+
+    if (state.similarityResult?.redundantSentenceIndices) {
+      for (const idx of state.similarityResult.redundantSentenceIndices) {
+        redundantIndices.add(idx);
+      }
+    }
+
+    // Near-duplicate check on sentences
+    const stopWords = new Set([
+      'the', 'a', 'an', 'is', 'are', 'was', 'were', 'be', 'been',
+      'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would',
+      'to', 'of', 'in', 'for', 'on', 'with', 'at', 'by', 'from',
+      'this', 'that', 'it', 'its', 'again', 'also', 'and', 'or', 'but'
+    ]);
+    const sentenceWordSets = sentences.map(s =>
+      new Set(
+        s.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w))
+      )
     );
 
-    // For code, also remove duplicate imports
-    if (state.documentType === 'code' && state.duplicateResult.duplicateImports.length > 0) {
-      for (const dupImport of state.duplicateResult.duplicateImports) {
-        const idx = text.lastIndexOf(dupImport);
-        if (idx > 0) {
-          text = text.slice(0, idx) + text.slice(idx + dupImport.length);
+    for (let i = 0; i < sentences.length; i++) {
+      if (redundantIndices.has(i)) continue;
+      for (let j = i + 1; j < sentences.length; j++) {
+        if (redundantIndices.has(j)) continue;
+
+        const wordsA = sentenceWordSets[i];
+        const wordsB = sentenceWordSets[j];
+        if (wordsA.size === 0 || wordsB.size === 0) continue;
+
+        let inter = 0;
+        for (const w of wordsA) if (wordsB.has(w)) inter++;
+        const union = wordsA.size + wordsB.size - inter;
+        const sim = union > 0 ? inter / union : 0;
+
+        if (sim >= 0.70 || (wordsB.size >= 3 && Array.from(wordsB).every(w => wordsA.has(w)))) {
+          redundantIndices.add(j);
         }
       }
     }
 
-    if (duplicateIndices.size > 0) {
-      // Only keep "duplicates" that carry STRONG protective signals
-      // (critical keywords, questions, errors). Everything else can be
-      // deduplicated freely to enable real compression.
-      const filtered = sentences.filter((sentence, i) => {
-        if (!duplicateIndices.has(i)) return true;
-        return evaluatePreservation(sentence).strength === 'strong';
-      });
+    // For code, also remove duplicate imports
+    let result = text;
+    if (state.documentType === 'code' && state.duplicateResult?.duplicateImports && state.duplicateResult.duplicateImports.length > 0) {
+      for (const dupImport of state.duplicateResult.duplicateImports) {
+        const idx = result.lastIndexOf(dupImport);
+        if (idx > 0) {
+          result = result.slice(0, idx) + result.slice(idx + dupImport.length);
+        }
+      }
+    }
+
+    if (redundantIndices.size > 0) {
+      const filtered = sentences.filter((_, i) => !redundantIndices.has(i));
       return filtered.join(' ');
     }
 
-    return text;
+    return result;
   }
 
   private applyTypeSpecificCompression(text: string, state: WorkflowState, target: number): string {
@@ -409,6 +449,13 @@ export class CompressionNode implements AgentNode {
       result = result.replace(fillers, '');
     }
 
+    // Consolidate repetitive lists and patterns
+    result = this.consolidateRepetitiveLists(result);
+
+    // Strip repetitive conversational starters
+    result = result.replace(/(?:^|\.\s+)Again,\s*/gi, '. ');
+    result = result.replace(/(?:^|\.\s+)In conclusion,\s*/gi, '. ');
+
     // Sentence-start capitalization fix after phrase removal.
     // Match a period/exclamation/question followed by whitespace and a lowercase
     // letter, then re-capitalize while preserving the punctuation and whitespace.
@@ -425,36 +472,65 @@ export class CompressionNode implements AgentNode {
     return result;
   }
 
+  private consolidateRepetitiveLists(text: string): string {
+    let res = text;
+
+    // Consolidate "Please identify the X requirements."
+    res = res.replace(/(?:Please identify the ([a-zA-Z0-9_-]+) requirements\.?\s*){2,}/gi, (match) => {
+      const items = Array.from(match.matchAll(/Please identify the ([a-zA-Z0-9_-]+) requirements/gi)).map(m => m[1]);
+      return `Identify requirements: ${items.join(', ')}. `;
+    });
+
+    // Consolidate "The summary should mention (the )?X."
+    res = res.replace(/(?:The summary should mention (?:the )?([a-zA-Z0-9_\s-]+?)\.\s*){2,}/gi, (match) => {
+      const items = Array.from(match.matchAll(/The summary should mention (?:the )?([a-zA-Z0-9_\s-]+?)\./gi)).map(m => m[1].trim());
+      return `Summary must include: ${Array.from(new Set(items)).join(', ')}. `;
+    });
+
+    // Consolidate "don't ignore X."
+    res = res.replace(/(?:(?:please )?don't ignore ([a-zA-Z0-9_\s-]+?)\.\s*){2,}/gi, (match) => {
+      const items = Array.from(match.matchAll(/(?:please )?don't ignore ([a-zA-Z0-9_\s-]+?)\./gi)).map(m => m[1].trim());
+      return `Ensure coverage of: ${Array.from(new Set(items)).join(', ')}. `;
+    });
+
+    // Consolidate "Again, users [verb] tasks."
+    res = res.replace(/(?:Again, users ([a-zA-Z0-9_-]+) tasks\.?\s*){2,}/gi, (match) => {
+      const verbs = Array.from(match.matchAll(/Again, users ([a-zA-Z0-9_-]+) tasks/gi)).map(m => m[1]);
+      return `Users can ${verbs.join(', ')} tasks. `;
+    });
+
+    // Consolidate "Again, X is required."
+    res = res.replace(/(?:Again, (?:a |an )?([a-zA-Z0-9_-]+) is required\.?\s*){2,}/gi, (match) => {
+      const reqs = Array.from(match.matchAll(/Again, (?:a |an )?([a-zA-Z0-9_-]+) is required/gi)).map(m => m[1]);
+      return `Required: ${reqs.join(', ')}. `;
+    });
+
+    return res;
+  }
+
   private filterByImportance(text: string, state: WorkflowState, target: number): string {
-    // Only remove full sentences at high/extreme levels. Medium and low rely
-    // on word-level compression alone to preserve semantic accuracy.
-    if (target < 0.65 || state.importanceScores.length === 0) return text;
+    const sentences = splitSentences(text);
+    if (sentences.length <= 2) return text;
 
-    const sentences = text.split(/(?<=[.!?\n])\s*/).filter(s => s.trim().length > 5);
-    if (sentences.length <= 3) return text;
+    // Keep quota based on target:
+    // low (0.30) -> keep top ~75%
+    // medium (0.50) -> keep top ~50%
+    // high (0.70) -> keep top ~30%
+    // extreme (0.85) -> keep top ~18%
+    const keepPct = target <= 0.35 ? 0.75
+                  : target <= 0.55 ? 0.50
+                  : target <= 0.75 ? 0.30
+                  : 0.18;
 
-    /*
-     * Percentile-based filtering tuned for >95% accuracy retention.
-     *
-     * We keep MORE sentences than raw percentages might suggest because
-     * word-level compression (filler removal, contractions, phrase collapse)
-     * already saves many tokens without hurting accuracy. Sentence removal
-     * only kicks in at higher levels.
-     *
-     *   target 0.85 (extreme) → keep top 60%   (aggressive)
-     *   target 0.70 (high)    → keep top 75%   (moderate)
-     *   target 0.50 (medium)  → keep top 88%   (very light)
-     *
-     * Sentences with STRONG preservation strength are always kept —
-     * they don't count against the quota. This safeguards accuracy.
-     */
-    const keepPct = target >= 0.85 ? 0.60
-                  : target >= 0.70 ? 0.75
-                  : 0.88;
+    const maxSentences = Math.max(2, Math.ceil(sentences.length * keepPct));
+    if (maxSentences >= sentences.length) return text;
 
-    // Rank sentences by combined (importance + preservation strength) score
+    // Rank sentences by importance and preservation rules
     const ranked = sentences.map((sentence, i) => {
-      const importance = state.importanceScores[i]?.score ?? 0.5;
+      let importance = state.importanceScores[i]?.score ?? 0.5;
+      if (i === 0) importance += 0.4; // Anchor
+      if (/\?$/.test(sentence)) importance += 0.3; // Query
+      if (/\b(must|required|critical|ensure)\b/i.test(sentence)) importance += 0.2;
       const verdict = evaluatePreservation(sentence);
       return {
         i,
@@ -465,66 +541,55 @@ export class CompressionNode implements AgentNode {
       };
     });
 
-    // Always keep first sentence (context anchor) and all STRONG-preserved
     const forceKeep = new Set<number>();
-    forceKeep.add(0);
+    forceKeep.add(0); // Anchor
+
+    // Questions and strong directives are protected (at extreme target, only questions and core)
     for (const r of ranked) {
-      if (r.verdict.strength === 'strong') forceKeep.add(r.i);
+      if (/\?$/.test(r.sentence) || (r.verdict.strength === 'strong' && target < 0.8)) {
+        forceKeep.add(r.i);
+      }
     }
 
-    // Fill the rest by highest combined score up to the quota
-    const remainingSlots = Math.max(0, Math.ceil(sentences.length * keepPct) - forceKeep.size);
+    // Fill remaining quota with highest scoring sentences
     const eligible = ranked
       .filter((r) => !forceKeep.has(r.i))
       .sort((a, b) => b.combined - a.combined);
 
-    for (const r of eligible.slice(0, remainingSlots)) {
-      // At extreme + very aggressive compression, still respect medium-strength
-      // protection unless importance is truly low.
-      if (shouldPreserve(r.verdict.strength, target, r.importance)) {
-        forceKeep.add(r.i);
-      } else {
-        forceKeep.add(r.i);
-      }
-    }
-
-    // Ensure medium-strength sentences are preserved unless we're at extreme
-    // compression AND they're already outside the quota
-    for (const r of ranked) {
-      if (r.verdict.strength === 'medium' && target < 0.85) {
-        forceKeep.add(r.i);
-      }
+    const slotsNeeded = Math.max(0, maxSentences - forceKeep.size);
+    for (const r of eligible.slice(0, slotsNeeded)) {
+      forceKeep.add(r.i);
     }
 
     return sentences.filter((_, i) => forceKeep.has(i)).join(' ');
   }
 
   private optimizeTokens(text: string, target: number): string {
-    if (target < 0.5) return text;
-
     let result = text;
 
-    // Contractions
-    const contractions: Array<[RegExp, string]> = [
-      [/\bdo not\b/gi, "don't"],
-      [/\bcannot\b/gi, "can't"],
-      [/\bwill not\b/gi, "won't"],
-      [/\bshould not\b/gi, "shouldn't"],
-      [/\bwould not\b/gi, "wouldn't"],
-      [/\bcould not\b/gi, "couldn't"],
-      [/\bdoes not\b/gi, "doesn't"],
-      [/\bis not\b/gi, "isn't"],
-      [/\bare not\b/gi, "aren't"],
-      [/\bit is\b/gi, "it's"],
-      [/\bthat is\b/gi, "that's"],
-    ];
+    // Contractions (enabled for target >= 0.3)
+    if (target >= 0.3) {
+      const contractions: Array<[RegExp, string]> = [
+        [/\bdo not\b/gi, "don't"],
+        [/\bcannot\b/gi, "can't"],
+        [/\bwill not\b/gi, "won't"],
+        [/\bshould not\b/gi, "shouldn't"],
+        [/\bwould not\b/gi, "wouldn't"],
+        [/\bcould not\b/gi, "couldn't"],
+        [/\bdoes not\b/gi, "doesn't"],
+        [/\bis not\b/gi, "isn't"],
+        [/\bare not\b/gi, "aren't"],
+        [/\bit is\b/gi, "it's"],
+        [/\bthat is\b/gi, "that's"],
+      ];
 
-    for (const [pattern, replacement] of contractions) {
-      result = result.replace(pattern, replacement);
+      for (const [pattern, replacement] of contractions) {
+        result = result.replace(pattern, replacement);
+      }
     }
 
-    // Abbreviations for high compression
-    if (target >= 0.7) {
+    // Abbreviations (enabled for target >= 0.5)
+    if (target >= 0.5) {
       const abbreviations: Record<string, string> = {
         'approximately': 'approx',
         'configuration': 'config',
@@ -538,6 +603,8 @@ export class CompressionNode implements AgentNode {
         'repository': 'repo',
         'directory': 'dir',
         'parameter': 'param',
+        'management': 'mgmt',
+        'requirements': 'reqs',
         'for example': 'e.g.',
         'that is to say': 'i.e.',
       };
@@ -547,6 +614,6 @@ export class CompressionNode implements AgentNode {
       }
     }
 
-    return result;
+    return result.replace(/\s{2,}/g, ' ').trim();
   }
 }

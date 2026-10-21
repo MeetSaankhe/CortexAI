@@ -32,6 +32,14 @@ export function countCharacters(text: string): number {
   return text.length;
 }
 
+export function splitSentences(text: string): string[] {
+  if (!text) return [];
+  return text
+    .split(/(?<=[.!?\n])\s+/)
+    .map(s => s.trim())
+    .filter(s => s.length > 0);
+}
+
 export function detectDocumentType(text: string, filename?: string): string {
   if (filename) {
     const ext = filename.split('.').pop()?.toLowerCase();

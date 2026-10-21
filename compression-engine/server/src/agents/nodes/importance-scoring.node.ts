@@ -10,6 +10,7 @@
  */
 
 import { AgentNode, WorkflowState, ImportanceScore } from '../types';
+import { splitSentences } from '../../utils/tokens';
 
 export class ImportanceScoringNode implements AgentNode {
   name = 'importance_scoring';
@@ -30,11 +31,7 @@ export class ImportanceScoringNode implements AgentNode {
   }
 
   private splitIntoScorableUnits(text: string): string[] {
-    // Split by sentences and newlines, keeping reasonable chunks
-    return text
-      .split(/(?<=[.!?\n])\s*/)
-      .map(s => s.trim())
-      .filter(s => s.length > 5);
+    return splitSentences(text);
   }
 
   private scoreAll(sentences: string[], state: WorkflowState): ImportanceScore[] {
@@ -116,8 +113,16 @@ export class ImportanceScoringNode implements AgentNode {
       // Redundancy penalty (informed by similarity agent)
       if (state.similarityResult) {
         if (state.similarityResult.redundantSentenceIndices.includes(index)) {
-          score -= 0.3;
+          score -= 0.4;
           reasons.push('redundant');
+        }
+      }
+
+      // Duplicate penalty (informed by duplicate detection agent)
+      if (state.duplicateResult) {
+        if (state.duplicateResult.duplicateSentences.some(d => d.duplicate === index)) {
+          score -= 0.4;
+          reasons.push('duplicate');
         }
       }
 

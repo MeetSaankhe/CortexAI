@@ -126,19 +126,24 @@ export class SupervisorAgent {
       lastState = result;
 
       const accuracy = result.analytics?.semanticScore ?? 0;
+      const approved = result.validation?.approved ?? true;
+      const metTarget = input.accuracyTarget !== undefined
+        ? accuracy >= input.accuracyTarget
+        : approved;
+
       logger.info(
         `[Supervisor] Attempt ${i + 1}/${attempts.length} @ ${level}: accuracy=${(accuracy * 100).toFixed(1)}%, ` +
-        `ratio=${((result.analytics?.compressionRatio ?? 0) * 100).toFixed(1)}%`
+        `ratio=${((result.analytics?.compressionRatio ?? 0) * 100).toFixed(1)}%, approved=${approved}`
       );
 
-      // Track the highest-compression result that meets the target
-      if (accuracy >= target && !bestState) {
+      // If approved / target met, use this result (it is the highest compression attempted that meets the requirement)
+      if (metTarget) {
         bestState = result;
-        break; // early exit: found a result that satisfies the requirement
+        break;
       }
 
-      // Track the best available even if none meets target
-      if (!bestState || accuracy > (bestState.analytics?.semanticScore ?? 0)) {
+      // Track the best available
+      if (!bestState || (approved && !bestState.validation?.approved) || accuracy > (bestState.analytics?.semanticScore ?? 0)) {
         bestState = result;
       }
     }

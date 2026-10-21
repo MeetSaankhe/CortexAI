@@ -59,7 +59,7 @@ export class DocumentClassificationNode implements AgentNode {
     // Return highest confidence classification
     signals.sort((a, b) => b.confidence - a.confidence);
 
-    if (signals[0].confidence > 0.3) {
+    if (signals[0].confidence >= 0.6) {
       return signals[0];
     }
 

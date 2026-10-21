@@ -8,6 +8,7 @@
  */
 
 import { AgentNode, WorkflowState, DuplicateResult } from '../types';
+import { splitSentences } from '../../utils/tokens';
 
 export class DuplicateDetectionNode implements AgentNode {
   name = 'duplicate_detection';
@@ -43,24 +44,51 @@ export class DuplicateDetectionNode implements AgentNode {
   }
 
   private findDuplicateSentences(text: string): Array<{ original: number; duplicate: number; text: string }> {
-    const sentences = text.split(/[.!?\n]+/)
-      .map(s => s.trim())
-      .filter(s => s.length > 20);
-
+    const sentences = splitSentences(text);
     const results: Array<{ original: number; duplicate: number; text: string }> = [];
-    const seen = new Map<string, number>();
+    const seenNormalized = new Map<string, number>();
+    const stopWords = new Set([
+      'the', 'a', 'an', 'is', 'are', 'was', 'were', 'be', 'been',
+      'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would',
+      'to', 'of', 'in', 'for', 'on', 'with', 'at', 'by', 'from',
+      'this', 'that', 'it', 'its', 'again', 'also', 'and', 'or', 'but'
+    ]);
+    const sentenceWordSets = sentences.map(s =>
+      new Set(
+        s.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w))
+      )
+    );
 
     for (let i = 0; i < sentences.length; i++) {
-      const normalized = sentences[i].toLowerCase().replace(/\s+/g, ' ');
+      const normalized = sentences[i].toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+      if (!normalized) continue;
 
-      if (seen.has(normalized)) {
+      // 1. Exact match
+      if (seenNormalized.has(normalized)) {
         results.push({
-          original: seen.get(normalized)!,
+          original: seenNormalized.get(normalized)!,
           duplicate: i,
           text: sentences[i],
         });
-      } else {
-        seen.set(normalized, i);
+        continue;
+      }
+      seenNormalized.set(normalized, i);
+
+      // 2. Near-duplicate match with an earlier sentence
+      for (let j = 0; j < i; j++) {
+        const wordsA = sentenceWordSets[j];
+        const wordsB = sentenceWordSets[i];
+        if (wordsA.size === 0 || wordsB.size === 0) continue;
+
+        const sim = this.jaccardSimilarity(wordsA, wordsB);
+        if (sim >= 0.70 || (wordsB.size >= 3 && Array.from(wordsB).every(w => wordsA.has(w)))) {
+          results.push({
+            original: j,
+            duplicate: i,
+            text: sentences[i],
+          });
+          break;
+        }
       }
     }
 

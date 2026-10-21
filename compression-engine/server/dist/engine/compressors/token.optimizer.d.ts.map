@@ -1,0 +1,1 @@
+{"version":3,"file":"token.optimizer.d.ts","sourceRoot":"","sources":["../../../src/engine/compressors/token.optimizer.ts"],"names":[],"mappings":"AAAA,qBAAa,cAAc;IACzB,QAAQ,CAAC,IAAI,EAAE,MAAM,EAAE,MAAM,EAAE,MAAM,GAAG,MAAM;IAmC9C,OAAO,CAAC,YAAY;IAuCpB,OAAO,CAAC,aAAa;IAwCrB,OAAO,CAAC,mBAAmB;IAgB3B,OAAO,CAAC,eAAe;CAuBxB"}

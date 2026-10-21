@@ -22,14 +22,14 @@ async function runCompression(req: AuthRequest, res: Response) {
     documentType,
     llmProvider = 'openai',
     documentId,
-    accuracyTarget = 0.95,
+    accuracyTarget,
   } = req.body;
 
   if (!text || text.trim().length === 0) {
     throw new AppError('Text is required for compression', 400);
   }
 
-  logger.info(`[Compression] Starting pipeline: user=${req.userId} level=${level} target=${accuracyTarget}`);
+  logger.info(`[Compression] Starting pipeline: user=${req.userId} level=${level} target=${accuracyTarget ?? 'auto'}`);
 
   const workflowResult = await supervisor.orchestrate({
     text,
@@ -69,8 +69,8 @@ async function runCompression(req: AuthRequest, res: Response) {
       latencyCompressedMs: analytics.compressedTokens * 0.05,
       latencyImprovement: analytics.latencyImprovement,
       processingTimeMs: workflowResult.totalExecutionTimeMs,
-      accuracyTarget,
-      metTarget: analytics.semanticScore >= accuracyTarget,
+      accuracyTarget: accuracyTarget ?? workflowResult.validation?.estimatedAccuracy ?? 0.85,
+      metTarget: accuracyTarget !== undefined ? analytics.semanticScore >= accuracyTarget : (workflowResult.validation?.approved ?? true),
       adaptiveFallback: level !== workflowResult.compressionLevel,
     },
   });

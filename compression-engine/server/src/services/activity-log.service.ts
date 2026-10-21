@@ -42,6 +42,12 @@ export class ActivityLogService {
    */
   static async log(entry: LogEntry): Promise<void> {
     try {
+      const serializedMetadata = entry.metadata
+        ? typeof entry.metadata === 'string'
+          ? entry.metadata
+          : JSON.stringify(entry.metadata)
+        : null;
+
       await prisma.activityLog.create({
         data: {
           id: uuid(),
@@ -49,9 +55,7 @@ export class ActivityLogService {
           action: entry.action,
           resource: entry.resource,
           resourceId: entry.resourceId,
-          // Postgres JSON field: undefined stays undefined, actual value goes as JSON.
-          // Never pass null literally — Prisma treats it differently for JSON columns.
-          metadata: entry.metadata as any,
+          metadata: serializedMetadata,
           ipAddress: entry.ipAddress,
           userAgent: entry.userAgent,
         },
@@ -66,10 +70,25 @@ export class ActivityLogService {
    * Get recent activity for a user.
    */
   static async getForUser(userId: string, limit = 50) {
-    return prisma.activityLog.findMany({
+    const logs = await prisma.activityLog.findMany({
       where: { userId },
       orderBy: { createdAt: 'desc' },
       take: limit,
+    });
+
+    return logs.map((log) => {
+      let parsedMetadata: unknown = null;
+      if (log.metadata) {
+        try {
+          parsedMetadata = JSON.parse(log.metadata);
+        } catch {
+          parsedMetadata = log.metadata;
+        }
+      }
+      return {
+        ...log,
+        metadata: parsedMetadata,
+      };
     });
   }
 }

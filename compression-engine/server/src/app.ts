@@ -33,6 +33,9 @@ const limiter = rateLimit({
   max: isProduction ? 600 : 9999,
   standardHeaders: true,
   legacyHeaders: false,
+  validate: {
+    trustProxy: false,
+  },
 });
 
 const isVercelPreviewOrigin = (origin: string): boolean => {
@@ -141,7 +144,7 @@ app.get('/', (_req, res) => {
 
 app.use(errorHandler);
 
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 export const config = {
   api: {

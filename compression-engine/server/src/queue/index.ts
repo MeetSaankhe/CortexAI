@@ -267,6 +267,10 @@ export async function initQueue(): Promise<void> {
   JobQueue.register('compression', compressionHandler);
   JobQueue.register('ocr', ocrHandler);
   JobQueue.register('ocr_compress', ocrCompressHandler);
-  await JobQueue.recoverStuckJobs();
+  try {
+    await JobQueue.recoverStuckJobs();
+  } catch (err) {
+    logger.warn(`[Queue] Initial stuck job recovery deferred: ${(err as Error).message}`);
+  }
   logger.info('[Queue] Initialized (compression, ocr, ocr_compress)');
 }
